@@ -1,1 +1,4 @@
 *.elf
+/html/
+latex/
+*.o

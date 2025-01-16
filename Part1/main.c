@@ -1,14 +1,28 @@
 /**
  * @file main.c
- * @brief Main program to evaluate TSC performance.
- * @details Compile with 'gcc -O3 -o tsc_test.elf main.c tsc.c -lm'.
- * Run with 'taskset -c N ./tsc_test.elf' with N being the core number.
- * The program will output the mean, minimum, and maximum elapsed CPU cycles. Use the minimum value for the overhead adjustment (TSCCYCLES) in tsc.h.
+ * @brief Entry point for matrix operation performance evaluation.
  */
 
-#include "tsc.h"
+#include "matrix_ops.h"
+#include <stdio.h>
 
+/**
+ * @brief Main function to execute matrix operations.
+ * @return int Exit status.
+ */
 int main() {
-    eval_tsc_cycles();
+    printf("Evaluation: N=%d, type=%s\n", N, STR(TYPE));
+    
+    // Execute matrix operations
+    zero_vector();
+    copy_matrix_ij();
+    copy_matrix_ji();
+    add_matrix_ij();
+    add_matrix_ji();
+    scalar_product();
+    matrix_mult_ijk();
+    matrix_mult_ikj();
+    matrix_mult_blocked();
+    
     return 0;
 }

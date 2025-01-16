@@ -13,11 +13,6 @@
  */
 #define TSCCYCLES 13.0
 
-/**
- * @brief Number of iterations for performance evaluation.
- */
-#define N 100000
-
 #ifdef __i386__
     #define RDTSC_DIRTY "%eax", "%ebx", "%ecx", "%edx"
 #elif __x86_64__

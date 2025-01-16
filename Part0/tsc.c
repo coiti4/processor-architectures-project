@@ -8,6 +8,11 @@
 #include <stdlib.h>
 #include <math.h>
 
+/**
+ * @brief Number of iterations for performance evaluation.
+ */
+#define N 100000
+
 unsigned long long start_timer() {
     unsigned int hi = 0, lo = 0;
     asm volatile("cpuid\n\trdtscp\n\tmov %%edx, %0\n\tmov %%eax, %1\n"
