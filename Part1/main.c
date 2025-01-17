@@ -11,8 +11,8 @@
  * @return int Exit status.
  */
 int main() {
-    printf("Evaluation: N=%d, type=%s\n", N, STR(TYPE));
-    
+    printf("Evaluation: N=%d, type=%s, BL=%d\n", N, STR(TYPE), BL);
+
     // Execute matrix operations
     zero_vector();
     copy_matrix_ij();
@@ -23,6 +23,7 @@ int main() {
     matrix_mult_ijk();
     matrix_mult_ikj();
     matrix_mult_blocked();
+    matrix_mult_trans_ijk();
     
     return 0;
 }

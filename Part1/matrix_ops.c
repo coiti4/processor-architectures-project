@@ -9,9 +9,9 @@
 TYPE AF[N][N], YF[N][N], XF[N][N], YT[N][N]; /**< Matrices of size [N][N] */
 TYPE BF[N * N], CF[N * N];                  /**< Vectors of size N^2 */
 TYPE SF;                                     /**< Scalar accumulator */
-double results[M];                           /**< Array to store benchmark results */
+double results[M];                           /**< Array to store benchmark results in number of cycles*/
 
-long long start_time, end_time;
+unsigned long long start_time;
 double benchmark_time;
 
 /**
@@ -45,7 +45,7 @@ void print_results(const char *func_name, double iterations) {
     double normalize = 1.0 / iterations;
     printf("%s\t", func_name);
     for (int i = 0; i < M; i++) {
-        printf("%g%s", results[i] * normalize, (i == M - 1 ? "\n" : "\t"));
+        printf("%.3f%s", results[i] * normalize, (i == M - 1 ? "\n" : "\t"));
     }
 }
 
@@ -179,7 +179,7 @@ void matrix_mult_ijk() {
         benchmark_time = dtime(start_time, stop_timer());
         add_result(benchmark_time, m);
     }
-    print_results("MATRIX_MULT_IJK", (N * N * N));
+    print_results("MATRIX_MULT_IJK", ((long long)N * N * N));
     separator();
 }
 
@@ -202,7 +202,7 @@ void matrix_mult_ikj()
         benchmark_time = dtime(start_time, stop_timer());
         add_result(benchmark_time, m);
     }
-    print_results("MATRIX_MULT_IKJ", ((double)N * N * N));
+    print_results("MATRIX_MULT_IKJ", ((long long)N * N * N));
     separator();
 }
 
@@ -228,6 +228,45 @@ void matrix_mult_blocked() {
         benchmark_time = dtime(start_time, stop_timer());
         add_result(benchmark_time, m);
     }
-    print_results("MATRIX_MULT_BLOCKED", (N * N * N));
+    print_results("MATRIX_MULT_BLOCKED", ((long long)N * N * N));
+    separator();
+}
+
+/**
+ * @brief Matrix multiplication using the transposed matrix (i-j-k order).
+ *
+ * This function multiplies matrix A with the transposed matrix of X (XT) to improve cache efficiency.
+ * The result is stored in matrix Y.
+ */
+void matrix_mult_trans_ijk() {
+    int i, j, k, m;
+    TYPE XT[N][N];  // Transposed matrix of X
+
+    // Transpose the matrix X to improve memory access
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            XT[j][i] = XF[i][j];
+        }
+    }
+
+    // Perform the matrix multiplication M times to measure performance
+    for (m = 0; m < M; m++) {
+        start_time = start_timer();
+        
+        for (i = 0; i < N; i++) {
+            for (j = 0; j < N; j++) {
+                SF = ZERO;
+                for (k = 0; k < N; k++) {
+                    SF += AF[i][k] * XT[j][k];  // Use the transposed matrix XT
+                }
+                YF[i][j] = SF;
+            }
+        }
+
+        benchmark_time = dtime(start_time, stop_timer());
+        add_result(benchmark_time, m);
+    }
+
+    print_results("MM_TRANS_ijk", ((double)N * N * N));
     separator();
 }

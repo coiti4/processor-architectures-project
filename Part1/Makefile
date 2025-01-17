@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -O0 -I../Part0 -I.
+CFLAGS = -Wall -Wextra -Werror -O3 -I../Part0 -I.
 
 # Source files
 SRCS = main.c matrix_ops.c ../Part0/tsc.c

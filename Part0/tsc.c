@@ -11,7 +11,7 @@
 /**
  * @brief Number of iterations for performance evaluation.
  */
-#define N 100000
+#define SIZE 100000
 
 unsigned long long start_timer() {
     unsigned int hi = 0, lo = 0;
@@ -53,9 +53,9 @@ double tmean(double ar[], int n) {
 
 void eval_tsc_cycles() {
     double tsum = 0.0, t2sum = 0.0, tmin = 1e30, tmax = 0.0;
-    double tresults[N];
+    double tresults[SIZE];
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < SIZE; i++) {
         long long start = start_timer();
         long long end = stop_timer();
         double t = dtime(start, end);
@@ -66,9 +66,9 @@ void eval_tsc_cycles() {
         if (t > tmax) tmax = t;
     }
 
-    double avg = tsum / N;
-    double var = sqrt((t2sum + avg * avg * N - 2 * avg * tsum) / N);
-    double ttavg = tmean(tresults, N);
+    double avg = tsum / SIZE;
+    double var = sqrt((t2sum + avg * avg * SIZE - 2 * avg * tsum) / SIZE);
+    double ttavg = tmean(tresults, SIZE);
 
     printf("Average: %f\tMin: %f\tMax: %f\tVariance: %f\tTrimmed Avg: %f\n", avg, tmin, tmax, var, ttavg);
 }

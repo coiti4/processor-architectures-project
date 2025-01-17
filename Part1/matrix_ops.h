@@ -10,7 +10,7 @@
 #include <stdint.h>
 
 #ifndef N
-#define N 1000 /**< Size of matrices [N][N] and vectors [N^2] */
+#define N 500 /**< Size of matrices [N][N] and vectors [N^2] */
 #endif
 
 #ifndef M
@@ -83,5 +83,13 @@ void matrix_mult_ikj();
  * @brief Performs blocked matrix multiplication for optimized cache usage.
  */
 void matrix_mult_blocked();
+
+/**
+ * @brief Performs matrix multiplication using the transposed matrix (i-j-k order).
+ *
+ * This function multiplies matrix A with the transposed matrix of X (XT) to improve cache efficiency.
+ * The result is stored in matrix Y. The function also measures the execution time.
+ */
+void matrix_mult_trans_ijk();
 
 #endif /* MATRIX_OPS_H */
