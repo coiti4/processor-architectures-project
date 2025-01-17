@@ -162,6 +162,54 @@ void scalar_product() {
 }
 
 /**
+ * @brief Computes the optimized scalar product of vectors BF and CF.
+ */
+void scalar_product_opt()
+{
+    int i, m;
+    TYPE elem0, elem1, elem2, elem3;
+
+    for (m = 0; m < M; m++) 
+    {
+        start_time = start_timer();
+        SF = ZERO;
+        elem0 = elem1 = elem2 = elem3 = ZERO;
+        for (i = 0; i < (int)((N * N) / 3); i += 4)
+        {
+            elem0 = BF[i] * CF[i];
+            elem1 = BF[i + 1] * CF[i + 1];
+            elem2 = BF[i + 2] * CF[i + 2];
+            elem3 = BF[i + 3] * CF[i + 3];
+
+            SF += elem0 + elem1 + elem2 + elem3;
+        }
+        for (i = (int)((N * N) / 3); i < (int)(2*(N * N) / 3); i += 4)
+        {
+            elem0 = BF[i] * CF[i];
+            elem1 = BF[i + 1] * CF[i + 1];
+            elem2 = BF[i + 2] * CF[i + 2];
+            elem3 = BF[i + 3] * CF[i + 3];
+
+            SF += elem0 + elem1 + elem2 + elem3;
+        }
+        for (i = (int)(2*(N * N) / 3); i < (int)(N * N) - 4; i += 4)
+        {
+            elem0 = BF[i] * CF[i];
+            elem1 = BF[i + 1] * CF[i + 1];
+            elem2 = BF[i + 2] * CF[i + 2];
+            elem3 = BF[i + 3] * CF[i + 3];
+
+            SF += elem0 + elem1 + elem2 + elem3;
+        }
+
+        benchmark_time = dtime(start_time, stop_timer());
+        add_result(benchmark_time, m);
+    }
+    print_results("SCALAR_PRODUCT_OPT", (double)(N * N));
+    separator();
+}
+
+/**
  * @brief Performs matrix multiplication AF * XF = YF in ijk order.
  */
 void matrix_mult_ijk() {

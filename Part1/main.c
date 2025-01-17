@@ -20,6 +20,7 @@ int main() {
     add_matrix_ij();
     add_matrix_ji();
     scalar_product();
+    scalar_product_opt();
     matrix_mult_ijk();
     matrix_mult_ikj();
     matrix_mult_blocked();

@@ -92,4 +92,9 @@ void matrix_mult_blocked();
  */
 void matrix_mult_trans_ijk();
 
+/** 
+ * @brief Computes the optimized scalar product of vectors BF and CF.
+ */
+void scalar_product_opt();
+
 #endif /* MATRIX_OPS_H */
