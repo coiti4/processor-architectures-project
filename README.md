@@ -11,14 +11,6 @@ This repository focuses on various aspects of **processor architecture**—from 
 
 ```
 PROCESSOR_ARCHITECTURE/
-├─ .vscode/
-│   └─ tasks.json
-├─ latex/
-│   ├─ main.tex
-│   ├─ ref.bib
-│   ├─ ...
-│   └─ (LaTeX sources for the report)
-├─ html/
 ├─ TSC_Utilities/
 │   ├─ main.c
 │   ├─ tsc_test.elf
@@ -73,13 +65,13 @@ gcc -o tsc_test main.c tsc.c -O2
 **Location:** `Matrix_Operations/`
 **Description:** C code for basic linear algebra operations (copy, add, dot product, matrix multiply) with TSC-based performance measurement.
 
-    **Key files:**
-        **`main.c`**, **`matrix_ops.c`**, **`matrix_ops.h`**
-        Makefile producing **`matrix.elf`**
-    **Functions:**
-        **`copy_ij()`**, **`copy_ji()`**, **`add_ij()`**, **`add_ji()`**
-        **`ps() (dot product)
-        **`mm_ijk()`**, **`mm_ikj()`**, **`mm_b_ijk()`** (matrix multiplication strategies)
+ **Key files:**
+     **`main.c`**, **`matrix_ops.c`**, **`matrix_ops.h`**
+     Makefile producing **`matrix.elf`**
+ **Functions:**
+     **`copy_ij()`**, **`copy_ji()`**, **`add_ij()`**, **`add_ji()`**
+     **`ps() (dot product)
+     **`mm_ijk()`**, **`mm_ikj()`**, **`mm_b_ijk()`** (matrix multiplication strategies)
 
 ### How to Build
 
