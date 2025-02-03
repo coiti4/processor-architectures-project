@@ -62,16 +62,16 @@ gcc -o tsc_test main.c tsc.c -O2
 
 ## 2. Matrix_Operations
 
-**Location:** `Matrix_Operations/`
-**Description:** C code for basic linear algebra operations (copy, add, dot product, matrix multiply) with TSC-based performance measurement.
+**Location:** `Matrix_Operations/`  
+**Description:** C code for basic linear algebra operations (copy, add, dot product, matrix multiply) with TSC-based performance measurement.  
 
- **Key files:**
-     `main.c`, `matrix_ops.c`, `matrix_ops.h`
-     Makefile producing `matrix.elf`
- **Functions:**
-     `copy_ij()`, `copy_ji()`, `add_ij()`, `add_ji()`
-     `ps() (dot product)
-     `mm_ijk()`, `mm_ikj()`, `mm_b_ijk()` (matrix multiplication strategies)
+ **Key files:**  
+     - `main.c`, `matrix_ops.c`, `matrix_ops.h`  
+     - Makefile producing `matrix.elf`  
+ **Functions:**  
+     - `copy_ij()`, `copy_ji()`, `add_ij()`, `add_ji()`  
+     - `ps()` (dot product)  
+     - `mm_ijk()`, `mm_ikj()`, `mm_b_ijk()` (matrix multiplication strategies)  
 
 ### How to Build
 
