@@ -89,23 +89,23 @@ gcc -O2 -I../TSC_Utilities main.c matrix_ops.c ../TSC_Utilities/tsc.c -o matrix.
 
 ## 3. MIPS_Pipeline_Examples
 
-**Location:** `MIPS_Pipeline_Examples/`
-**Description:** MIPS assembly programs illustrating pipeline stalls, forwarding, branch hazards, and more.
+**Location:** `MIPS_Pipeline_Examples/`  
+**Description:** MIPS assembly programs illustrating pipeline stalls, forwarding, branch hazards, and more.  
 
-**Examples:**
-    `sum.s`, `sumf.s`, `mul.s`, `mulf.s`, `divf.s` — Basic int/float ops
-    `abs.s`, `double.s` — Double-precision floating examples
-    `fib.s`, `daxpy.s`, `power_naive.s`, `power_binary.s` — Larger loops
+**Examples:**  
+    `sum.s`, `sumf.s`, `mul.s`, `mulf.s`, `divf.s` — Basic int/float ops  
+    `abs.s`, `double.s` — Double-precision floating examples  
+    `fib.s`, `daxpy.s`, `power_naive.s`, `power_binary.s` — Larger loops  
 
-Use a MIPS simulator (e.g. EduMIPS64, SPIM) to load .s files and observe pipeline stages.
+Use a MIPS simulator (e.g. EduMIPS64, SPIM) to load .s files and observe pipeline stages.  
 
 ## 4. Cache_TLB_Simulation
 
-**Location:** Cache_TLB_Simulation/
-**Description:** Simulates a data cache and TLB. Tracks misses under different associativities, line sizes, page sizes, etc.
+**Location:** Cache_TLB_Simulation/  
+**Description:** Simulates a data cache and TLB. Tracks misses under different associativities, line sizes, page sizes, etc.  
 
-- `cache_tlb_sim.h` / `cache_tlb_sim.c`: Implements cache/TLB logic with LRU replacement, counters for misses.
-- `simulate_cache.c`: Example driver that configures and runs random memory accesses.
+- `cache_tlb_sim.h` / `cache_tlb_sim.c`: Implements cache/TLB logic with LRU replacement, counters for misses.  
+- `simulate_cache.c`: Example driver that configures and runs random memory accesses.  
 
 ### How to Build & Run
 ```bash
